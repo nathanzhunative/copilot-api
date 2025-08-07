@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: Session API
+  version: 1.0.0
+  description: Returns all sessions.
+
+servers:
+  - url: https://98cb2fd06d1f.ngrok-free.app 
+    description: Local development server
+
+paths:
+  /sessions:
+    get:
+      summary: Get all sessions
+      operationId: getAllSessions
+      responses:
+        '200':
+          description: A list of all sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+
+components:
+  schemas:
+    Session:
+      type: object
+      properties:
+        sessionName:
+          type: string
+        date:
+          type: string
+          format: date
+        attendees:
+          type: array
+          items:
+            type: string
+        summary:
+          type: string
+        transcript:
+          type: string
+        snapshots:
+          type: array
+          items:
+            type: string
+# openapi: 3.0.1
+# info:
+#   title: Sessions API
+#   version: 1.0.0
+#   description: API for retrieving meeting sessions and their metadata.
+
+# servers:
+#   - url: http://127.0.0.1:5000
+#     description: Local development server
+
+# paths:
+#   /sessions:
+#     get:
+#       summary: Get sessions, optionally filtered by attendee name
+#       parameters:
+#         - in: query
+#           name: attendee
+#           schema:
+#             type: string
+#           description: Filter sessions where this person attended
+#       responses:
+#         '200':
+#           description: A list of sessions
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: '#/components/schemas/Session'
+#   /:
+#     get:
+#       summary: Get all sessions
+#       responses:
+#         '200':
+#           description: A list of sessions
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   $ref: '#/components/schemas/Session'
+
+# components:
+#   schemas:
+#     Session:
+#       type: object
+#       properties:
+#         sessionName:
+#           type: string
+#         date:
+#           type: string
+#           format: date
+#         attendees:
+#           type: array
+#           items:
+#             type: string
+#         summary:
+#           type: string
+#         transcript:
+#           type: string
+#         snapshots:
+#           type: array
+#           items:
+#             type: string
+#             format: uri
