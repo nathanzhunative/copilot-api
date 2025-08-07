@@ -26,6 +26,10 @@ sessions = [
 def get_everything():
     return jsonify(sessions)
 
+@app.route("/", methods=["GET"])
+def home():
+    return "API is live", 200
+
 # @app.route("/sessions", methods=["GET"])
 # def get_sessions():
 #     attendee = request.args.get("attendee")

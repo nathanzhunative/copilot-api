@@ -5,8 +5,8 @@ info:
   description: Returns all sessions.
 
 servers:
-  - url: https://98cb2fd06d1f.ngrok-free.app 
-    description: Local development server
+  - url: https://copilot-api-1.onrender.com
+    description: Public server
 
 paths:
   /sessions:
@@ -22,6 +22,18 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Session'
+  /:
+    get:
+      summary: Health check
+      description: Returns a simple message to confirm the API is running.
+      operationId: getHealthCheck
+      responses:
+        '200':
+          description: API is live
+          content:
+            text/plain:
+              schema:
+                type: string
 
 components:
   schemas:
