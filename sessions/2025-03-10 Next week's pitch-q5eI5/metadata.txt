@@ -1,0 +1,17 @@
+{
+  "startTime": "2025-03-10T16:16:56.012Z",
+  "durationFormatted": "00:00:01",
+  "name": "Next week's pitch",
+  "folderName": "2025-03-10 Next week's pitch-q5eI5",
+  "summary": "The meeting had minimal content, and there were no significant discussions or updates shared.",
+  "actions": [
+    {
+      "actionText": "No follow-up actions generated due to minimal content.",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    }
+  ],
+  "people": [],
+  "snapshots": []
+}

@@ -1,0 +1,35 @@
+{
+  "startTime": "2025-03-10T15:43:31.608Z",
+  "durationFormatted": "00:02:55",
+  "name": "Website Design Updates",
+  "folderName": "2025-03-10 Website Design Updates-tAARy",
+  "summary": "The meeting focused on design updates for the website's homepage and key user flows. The team discussed incorporating a new color scheme and typography, adjusting the CTA button contrast, and selecting stronger visuals for the featured section. They aim to finalize these tweaks by tomorrow for a development handoff by Friday.",
+  "actions": [
+    {
+      "actionText": "Schedule a check-in meeting on Friday to confirm design updates",
+      "startTime": "2025-03-14T10:00:00.823Z",
+      "endTime": "2025-03-14T11:00:00.823Z",
+      "title": "Design Update Confirmation",
+      "description": "Confirm final design tweaks and readiness for development handoff.",
+      "location": "",
+      "status": 0,
+      "iconSrc": "assets/calendar.png",
+      "buttonAction": null
+    },
+    {
+      "actionText": "Mock up variations with bolder imagery for the featured section by end of the day",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    }
+  ],
+  "people": [],
+  "snapshots": [
+    {
+      "timestamp": "2025-03-10T15:46:26.430Z",
+      "name": "image_2025-03-10T15-46-26_swcT.png",
+      "description": "Snapshot 1",
+      "camera": "Remarkable"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "startTime": "2025-03-10T16:15:30.574Z",
+  "durationFormatted": "00:00:01",
+  "name": "Finance meeting",
+  "folderName": "2025-03-10 Finance meeting-xgbKV",
+  "summary": "There was not much content in the meeting.",
+  "actions": [],
+  "people": [],
+  "snapshots": []
+}

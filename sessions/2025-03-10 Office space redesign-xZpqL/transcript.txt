@@ -1,0 +1,8 @@
+[
+{
+  "transcript": "Hey. Thanks for meeting. I wanted to go over our office space redesign and see where we stand with the layout updates. I've drafted a few potential layouts based on the feedback from last week. The goal is to create a more open, collaborative environment while keeping some private workspaces. I actually sketched out some initial ideas. Let me me take a picture so we can compare. ",
+  "start": 1.1999999,
+  "end": 17.46,
+  "name": "Speaker 1"
+}
+]

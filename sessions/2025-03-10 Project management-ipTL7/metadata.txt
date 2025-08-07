@@ -1,0 +1,10 @@
+{
+  "startTime": "2025-03-10T16:16:19.415Z",
+  "durationFormatted": "00:00:01",
+  "name": "Project management",
+  "folderName": "2025-03-10 Project management-ipTL7",
+  "summary": "The meeting had minimal content and lacked detailed discussion.",
+  "actions": [],
+  "people": [],
+  "snapshots": []
+}

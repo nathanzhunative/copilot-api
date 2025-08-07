@@ -1,0 +1,41 @@
+{
+  "startTime": "2025-03-10T15:55:30.058Z",
+  "durationFormatted": "00:00:57",
+  "name": "Office space redesign",
+  "folderName": "2025-03-10 Office space redesign-xZpqL",
+  "summary": "The meeting focused on potential layouts for an office space redesign aimed at creating an open, collaborative environment with private workspaces. A draft layout was reviewed, highlighting areas such as desks, collaborative spaces, and meeting areas. Discussions included sound management options like partitions and glass devices and color scheme selections balancing modern and warm tones.",
+  "actions": [
+    {
+      "actionText": "Schedule review meeting for material selections",
+      "startTime": "2025-03-17T10:00:00.672Z",
+      "endTime": "2025-03-17T11:00:00.672Z",
+      "title": "Review meeting for material selections",
+      "description": "Review material selections and finalize office layout design.",
+      "location": "",
+      "status": 0,
+      "iconSrc": "assets/calendar.png",
+      "buttonAction": null
+    },
+    {
+      "actionText": "Refine office layout design based on feedback",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    },
+    {
+      "actionText": "Research sound management solutions for office space",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    }
+  ],
+  "people": [],
+  "snapshots": [
+    {
+      "timestamp": "2025-03-10T15:55:48.247Z",
+      "name": "image_2025-03-10T15-55-48_j2dq.png",
+      "description": "Snapshot 1",
+      "camera": "Remarkable"
+    }
+  ]
+}

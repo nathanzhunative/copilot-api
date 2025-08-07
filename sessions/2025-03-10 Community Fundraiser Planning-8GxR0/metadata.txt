@@ -1,0 +1,53 @@
+{
+  "startTime": "2025-03-10T16:01:04.627Z",
+  "durationFormatted": "00:02:35",
+  "name": "Community Fundraiser Planning",
+  "folderName": "2025-03-10 Community Fundraiser Planning-8GxR0",
+  "summary": "In the meeting, attendees discussed planning a community fundraiser, focusing on finalizing the event theme and outreach plan. Theme ideas included 'Local Hero's Night', 'Spring Carnival', 'Outdoor Music Fest', and 'Group Run'. They also considered venue options like a park, school gym, and community center. A promotional video and social media strategy were proposed, with plans to check progress by Wednesday.",
+  "actions": [
+    {
+      "actionText": "Schedule progress review meeting on Wednesday",
+      "startTime": "2025-03-12T09:00:00.559Z",
+      "endTime": "2025-03-12T10:00:00.559Z",
+      "title": "Fundraiser Planning Progress Review",
+      "description": "Review progress on fundraiser planning including theme, outreach, and promotional materials.",
+      "location": "",
+      "status": 0,
+      "iconSrc": "assets/calendar.png",
+      "buttonAction": null
+    },
+    {
+      "actionText": "Finalize the event theme and outreach plan for the fundraiser",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    },
+    {
+      "actionText": "Create a promotional video featuring past event highlights",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    },
+    {
+      "actionText": "Finalize and start the social media calendar for the fundraiser promotion starting next week",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    }
+  ],
+  "people": [],
+  "snapshots": [
+    {
+      "timestamp": "2025-03-10T16:01:25.014Z",
+      "name": "image_2025-03-10T16-01-24_WLqm.png",
+      "description": "Snapshot 1",
+      "camera": "Remarkable"
+    },
+    {
+      "timestamp": "2025-03-10T16:03:23.607Z",
+      "name": "image_2025-03-10T16-03-23_UjFS.png",
+      "description": "Snapshot 2",
+      "camera": "Remarkable"
+    }
+  ]
+}

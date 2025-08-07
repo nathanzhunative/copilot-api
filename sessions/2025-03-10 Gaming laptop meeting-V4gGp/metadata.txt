@@ -1,0 +1,30 @@
+{
+  "startTime": "2025-03-10T15:50:10.642Z",
+  "durationFormatted": "00:01:22",
+  "name": "Gaming laptop meeting",
+  "folderName": "2025-03-10 Gaming laptop meeting-V4gGp",
+  "summary": "In the meeting, Taylor discussed options for purchasing a new gaming laptop focusing on performance with models like Asus ROG Scar 17, Alienware m18, and Razer Blade 16. After evaluating performance, cooling, and battery life, the Asus ROG Strix was chosen as the top choice due to its balance of power and cooling.",
+  "actions": [
+    {
+      "actionText": "Send final details for ordering Asus ROG Strix laptop.",
+      "status": 0,
+      "iconSrc": "assets/icons/null.png",
+      "buttonAction": null
+    }
+  ],
+  "people": [],
+  "snapshots": [
+    {
+      "timestamp": "2025-03-10T15:50:47.997Z",
+      "name": "image_2025-03-10T15-50-47_xCJv.png",
+      "description": "Snapshot 1",
+      "camera": "Remarkable"
+    },
+    {
+      "timestamp": "2025-03-10T15:51:17.886Z",
+      "name": "image_2025-03-10T15-51-17_3SAo.png",
+      "description": "Snapshot 2",
+      "camera": "Remarkable"
+    }
+  ]
+}

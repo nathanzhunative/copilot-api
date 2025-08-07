@@ -1,0 +1,14 @@
+[
+{
+  "transcript": "Good morning. Thanks for hopping on call. I wanted to go over the design updates and check on our timeline for the new website launch. Sounds good. I have the latest drafts already, and I think we're in a solid place with the home page layout. Before we dive in, let me know just know that today's meeting will focus on the home page and key user flows. I'll take quick picture of the agenda I wrote down so we can reference it later. Alright. So for the home page, incorporated the new color scheme and typography updates late based on last week's feedback. Let me share my screen. Can you see this? Yep. I see it. This looks much cleaner. The hero section feels a lot more balanced, but I'm wondering should we increase the contrast on the CTA button? It blends a bit too much. ",
+  "start": 2.72,
+  "end": 37.75,
+  "name": "Speaker 1"
+},
+{
+  "transcript": "Sounds Good call. I can tweak that. Also, I've been testing how the new images fit in with the layout. Here's a mock up with current selections. I like the direction, but maybe we need a stronger visual for the featured section. Me set up a quick reference image of our current mood board so we can compare. Helps. I think we can definitely refine this by putting in some bolder imagery. I'll mock up a few variations by end of the day. Moving on, what's our timeline looking like for the final final design? If we lock in these final tweaks by tomorrow, we should be good for development hand off by Friday. Great. Let me jot that down. Actually, I'll take a picture of my notes so we don't miss anything. Anything else we need to cover? ",
+  "start": 39.449997,
+  "end": 76.5,
+  "name": "Speaker 1"
+}
+]

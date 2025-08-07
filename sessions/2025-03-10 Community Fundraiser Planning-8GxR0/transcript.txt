@@ -1,0 +1,26 @@
+[
+{
+  "transcript": "Hey. ",
+  "start": 3.1950002,
+  "end": 3.6950002,
+  "name": "Speaker 1"
+},
+{
+  "transcript": "Thanks for meeting with me. I wanted to go over the details while I come and communicate fundraiser and make sure we're on track. I've been working on the promotional materials and social media strategy. We need to finalize the event theme and outreach plan. I actually wrote down a few theme ideas. Let me take a picture so we can review them together. Cool. Take picture. ",
+  "start": 5.81,
+  "end": 21.13,
+  "name": "Speaker 1"
+},
+{
+  "transcript": "I love the local here as an ID. We can highlight community leaders and essential workers that would resonate well. We also need to confirm the the venue. I'll take a picture of the available location so we can decide. For marketing, I was thinking about creating a promotional video featuring past event highlights. We'll need some visuals for that. ",
+  "start": 23.06,
+  "end": 39.43,
+  "name": "Speaker 1"
+},
+{
+  "transcript": "I'll snap a quick picture of our past fundraiser flyer designs for reference. I'll snap a quick picture of our pulse binaries apply designs for reference. I'll finalize the social media calendar we can start promoting next week. Let's check-in Wednesday to review our progress. Thanks ",
+  "start": 41.47,
+  "end": 152.76001,
+  "name": "Speaker 1"
+}
+]
