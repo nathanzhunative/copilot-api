@@ -46,7 +46,7 @@ six==1.17.0
 stack-data==0.6.3
 sympy==1.14.0
 tokenizers==0.21.2
-torch==2.2.2
+torch==2.7.1  # or any listed version that Render supports
 tqdm==4.67.1
 traitlets==5.14.3
 transformers==4.53.3
