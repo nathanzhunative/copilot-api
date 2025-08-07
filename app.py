@@ -47,7 +47,7 @@ import json
 
 app = Flask(__name__)
 
-SESSIONS_DIR = "../sessions"
+SESSIONS_DIR = "sessions"
 
 def load_sessions():
     sessions = []
@@ -91,5 +91,5 @@ def home():
     return "API is live", 200
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5002))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
