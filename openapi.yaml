@@ -11,17 +11,25 @@ servers:
 paths:
   /sessions:
     get:
-      summary: Get all sessions
-      operationId: getAllSessions
+      summary: Get all user sessions
+      description: >
+        Retrieves a list of all user sessions. Each session includes metadata such as name, start time, duration, summary, transcript, action items, and optional snapshots. 
+        This endpoint is useful for answering questions about what meetings occurred, what was discussed, what action items were generated, and visual content shared during those meetings.
+        The returned data can be filtered or summarized to support queries like:
+        - "What did we talk about in the design meeting?"
+        - "Show me my action items from recent sessions"
+        - "What meetings happened last week?"
+        - "Do we have any snapshots from the fundraiser planning meeting?"
       responses:
         '200':
-          description: A list of all sessions
+          description: A list of sessions
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Session'
+
   /:
     get:
       summary: Health check
@@ -34,6 +42,94 @@ paths:
             text/plain:
               schema:
                 type: string
+  /sessions/summary:
+    get:
+      summary: Get summaries of all sessions
+      description: Returns only the name, date, and summary of each session to answer high-level recap questions.
+      responses:
+        '200':
+          description: A list of session summaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    date:
+                      type: string
+                      format: date-time
+                    summary:
+                      type: string
+
+  /sessions/recent:
+    get:
+      summary: Get sessions from the past N days
+      description: >
+        Returns sessions that started within the past N days. The number of days can be customized using the optional `days` query parameter. 
+        Defaults to 7 if not provided.
+      parameters:
+        - in: query
+          name: days
+          schema:
+            type: integer
+            minimum: 1
+          description: Number of days to look back (e.g. 3 for past 3 days). Defaults to 7.
+      responses:
+        '200':
+          description: A list of recent sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+                  
+  /sessions/actions:
+    get:
+      summary: Get all action items from all sessions
+      description: Returns a flattened list of all action items across sessions, useful for questions like "what do I need to do this week?"
+      responses:
+        '200':
+          description: A list of action items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    session:
+                      type: string
+                    actionText:
+                      type: string
+                    buttonAction:
+                      type: string
+                      nullable: true
+                    description:
+                      type: string
+                      nullable: true
+                    startTime:
+                      type: string
+                      format: date-time
+                      nullable: true
+                    endTime:
+                      type: string
+                      format: date-time
+                      nullable: true
+                    iconSrc:
+                      type: string
+                    location:
+                      type: string
+                      nullable: true
+                    status:
+                      type: integer
+                    title:
+                      type: string
+                      nullable: true
+
 
 components:
   schemas:
@@ -57,68 +153,3 @@ components:
           type: array
           items:
             type: string
-# openapi: 3.0.1
-# info:
-#   title: Sessions API
-#   version: 1.0.0
-#   description: API for retrieving meeting sessions and their metadata.
-
-# servers:
-#   - url: http://127.0.0.1:5000
-#     description: Local development server
-
-# paths:
-#   /sessions:
-#     get:
-#       summary: Get sessions, optionally filtered by attendee name
-#       parameters:
-#         - in: query
-#           name: attendee
-#           schema:
-#             type: string
-#           description: Filter sessions where this person attended
-#       responses:
-#         '200':
-#           description: A list of sessions
-#           content:
-#             application/json:
-#               schema:
-#                 type: array
-#                 items:
-#                   $ref: '#/components/schemas/Session'
-#   /:
-#     get:
-#       summary: Get all sessions
-#       responses:
-#         '200':
-#           description: A list of sessions
-#           content:
-#             application/json:
-#               schema:
-#                 type: array
-#                 items:
-#                   $ref: '#/components/schemas/Session'
-
-# components:
-#   schemas:
-#     Session:
-#       type: object
-#       properties:
-#         sessionName:
-#           type: string
-#         date:
-#           type: string
-#           format: date
-#         attendees:
-#           type: array
-#           items:
-#             type: string
-#         summary:
-#           type: string
-#         transcript:
-#           type: string
-#         snapshots:
-#           type: array
-#           items:
-#             type: string
-#             format: uri
