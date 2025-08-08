@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import os
 import json
 from datetime import datetime, timedelta
@@ -15,6 +15,8 @@ def load_sessions() -> list[dict]:
     if not os.path.exists(SESSIONS_DIR):
         return sessions
     
+    BASE_URL = "https://copilot-api-1.onrender.com"
+
     # Iterate through each session folder
     for session_folder in os.listdir(SESSIONS_DIR):
         folder_path = os.path.join(SESSIONS_DIR, session_folder)
@@ -25,7 +27,8 @@ def load_sessions() -> list[dict]:
 
             for fname in os.listdir(folder_path):
                 if fname.endswith(".png") or fname.endswith(".jpg") or fname.startswith("image"):
-                    images.append(os.path.join(folder_path, fname))
+                    url_path = f"/sessions/{session_folder}/{fname}"
+                    images.append(f"{BASE_URL}{url_path}")
 
             if os.path.exists(metadata_path):
                 try:
@@ -106,6 +109,49 @@ def get_session_summaries():
 @app.route("/", methods=["GET"])
 def home():
     return "API is live", 200
+
+@app.route("/sessions/by_attendee", methods=["GET"])
+def get_sessions_by_attendee():
+    attendee = request.args.get("name")
+    if not attendee:
+        return jsonify({"error": "Missing 'name' parameter"}), 400
+    sessions = load_sessions()
+    filtered = [s for s in sessions if attendee in s.get("attendees", [])]
+    return jsonify(filtered)
+
+@app.route("/sessions/by_date", methods=["GET"])
+def get_sessions_by_date():
+    start = request.args.get("from")
+    end = request.args.get("to")
+    try:
+        start_dt = datetime.fromisoformat(start) if start else datetime.min
+        end_dt = datetime.fromisoformat(end) if end else datetime.max
+    except ValueError:
+        return jsonify({"error": "Invalid date format. Use YYYY-MM-DD or ISO 8601."}), 400
+
+    sessions = load_sessions()
+    filtered = [
+        s for s in sessions
+        if "startTime" in s and start_dt <= datetime.fromisoformat(s["startTime"].replace("Z", "+00:00")) <= end_dt
+    ]
+    return jsonify(filtered)
+
+@app.route("/sessions/topics", methods=["GET"])
+def get_all_topics():
+    sessions = load_sessions()
+    # Use keywords from summaries to simulate "topics"
+    topics = set()
+    for s in sessions:
+        summary = s.get("summary", "")
+        for word in summary.split():
+            if word.istitle() and len(word) > 3:  # crude filter for capitalized words
+                topics.add(word.strip(".,"))
+    return jsonify(sorted(topics))
+
+@app.route("/sessions/<session_id>/<image_name>")
+def get_image(session_id, image_name):
+    image_path = os.path.join(SESSIONS_DIR, session_id)
+    return send_from_directory(image_path, image_name)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
