@@ -1,205 +1,21 @@
 openapi: 3.0.0
 info:
-  title: Session API
+  title: Qdrant Query API
   version: 1.0.0
-  description: Returns all sessions.
+  description: Endpoints for exploring and querying Qdrant Cloud collections.
 
 servers:
   - url: https://copilot-api-1.onrender.com
     description: Public server
 
 paths:
-  /sessions:
+  /collections:
     get:
-      summary: Get all user sessions
-      description: >
-        Returns the complete list of all user sessions. This endpoint supports answering a wide range of user queries.
-        It is safe to call this endpoint and perform manual searches and logic when no more specific endpoint is applicable
-        and sufficient to answer the user query.
-
+      summary: List all collections
+      description: Returns the names of all collections in the connected Qdrant Cloud instance.
       responses:
         '200':
-          description: A list of sessions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Session'
-
-  /:
-    get:
-      summary: Health check
-      description: Returns a simple message to confirm the API is running.
-      operationId: getHealthCheck
-      responses:
-        '200':
-          description: API is live
-          content:
-            text/plain:
-              schema:
-                type: string
-  /sessions/summary:
-    get:
-      summary: Get summaries of all sessions
-      description: Returns only the name, date, and summary of each session to answer high-level recap questions.
-      responses:
-        '200':
-          description: A list of session summaries
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    date:
-                      type: string
-                      format: date-time
-                    summary:
-                      type: string
-
-  /sessions/recent:
-    get:
-      summary: Get sessions from the past N days
-      description: >
-        Returns sessions that started within the past N days. The number of days can be customized using the optional `days` query parameter. 
-        Defaults to 7 if not provided.
-      parameters:
-        - in: query
-          name: days
-          schema:
-            type: integer
-            minimum: 1
-          description: Number of days to look back (e.g. 3 for past 3 days). Defaults to 7.
-      responses:
-        '200':
-          description: A list of recent sessions
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Session'
-                  
-  /sessions/actions:
-    get:
-      summary: Get all action items from all sessions
-      description: Returns a flattened list of all action items across sessions, useful for questions like "what do I need to do this week?"
-      responses:
-        '200':
-          description: A list of action items
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    session:
-                      type: string
-                    actionText:
-                      type: string
-                    buttonAction:
-                      type: string
-                      nullable: true
-                    description:
-                      type: string
-                      nullable: true
-                    startTime:
-                      type: string
-                      format: date-time
-                      nullable: true
-                    endTime:
-                      type: string
-                      format: date-time
-                      nullable: true
-                    iconSrc:
-                      type: string
-                    location:
-                      type: string
-                      nullable: true
-                    status:
-                      type: integer
-                    title:
-                      type: string
-                      nullable: true
-
-  /sessions/by_attendee:
-    get:
-      summary: Get sessions by attendee
-      description: Returns sessions where the specified person was present. Useful for queries like "What meetings did Alex attend?"
-      parameters:
-        - in: query
-          name: name
-          required: true
-          schema:
-            type: string
-          description: Full name of the attendee (case-sensitive match).
-      responses:
-        '200':
-          description: A list of sessions attended by the given person
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Session'
-        '400':
-          description: Missing 'name' query parameter
-
-  /sessions/by_date:
-    get:
-      summary: Get sessions within a date range. The range can be just a month or a year.
-      description: >
-        Returns sessions that occurred between the provided `from` and `to` dates (inclusive).
-        Dates must be in ISO 8601 or YYYY-MM-DD format.
-        If the user specifies only a month, the system will default to the first and last days of that month of this year, so if a 
-        user asks "What meetings happened in January", the system will return all meetings from "2025-01-01" to "2025-01-31".
-        If the user specifies only a month (e.g., "February 2025") or a year (e.g., "2024"), the system should default:
-        - `from` = the **first day** of the month or year (e.g., "2025-02-01" or "2024-01-01")
-        - `to` = the **last day** of the month or year (e.g., "2025-02-28" or "2024-12-31")
-        This endpoint supports queries like:
-        - "What meetings happened in March 2025?"
-        - "Show me my meetings in 2024"
-      parameters:
-        - in: query
-          name: from
-          required: false
-          schema:
-            type: string
-            format: date
-          description: Start date (inclusive)
-        - in: query
-          name: to
-          required: false
-          schema:
-            type: string
-            format: date
-          description: End date (inclusive)
-      responses:
-        '200':
-          description: A list of sessions in the date range
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Session'
-        '400':
-          description: Invalid or missing date format
-
-  /sessions/topics:
-    get:
-      summary: Extract high-level topics from session summaries
-      description: >
-        Returns a list of topics mentioned across all session summaries. Capitalized keywords are extracted to represent main discussion areas.
-        Useful for summarizing themes across meetings.
-      responses:
-        '200':
-          description: A list of topic keywords
+          description: A list of collection names
           content:
             application/json:
               schema:
@@ -207,59 +23,71 @@ paths:
                 items:
                   type: string
 
-  /sessions/{session_id}/{image_name}:
+  /collections/{name}/sample:
     get:
-      summary: Serve a snapshot image from a session
-      description: Returns an image file (PNG or JPG) from the specified session folder.
+      summary: Get sample points from a collection
+      description: Returns up to 5 points with payloads from the specified collection.
       parameters:
         - in: path
-          name: session_id
+          name: name
           required: true
           schema:
             type: string
-          description: The folder name for the session (e.g. "2025-03-10 Fundraiser...").
-        - in: path
-          name: image_name
-          required: true
-          schema:
-            type: string
-          description: The filename of the image to retrieve (e.g. "image_2025-03-10T16-03-23_UjFS.png").
+          description: Name of the collection.
       responses:
         '200':
-          description: Snapshot image file
+          description: A list of points with IDs and payloads
           content:
-            image/png:
+            application/json:
               schema:
-                type: string
-                format: binary
-            image/jpeg:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    payload:
+                      type: object
+
+  /similar:
+    get:
+      summary: Find points similar to a given ID
+      description: Returns a list of points similar to the given point ID in the specified collection using vector similarity.
+      parameters:
+        - in: query
+          name: collection
+          schema:
+            type: string
+            default: assets
+          description: Name of the collection.
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID of the reference point.
+        - in: query
+          name: k
+          schema:
+            type: integer
+            default: 5
+          description: Number of similar points to return.
+      responses:
+        '200':
+          description: A list of similar points
+          content:
+            application/json:
               schema:
-                type: string
-                format: binary
-        '404':
-          description: Image not found or invalid path
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    score:
+                      type: number
+                    payload:
+                      type: object
+        '400':
+          description: Missing or invalid parameters
 
-
-
-components:
-  schemas:
-    Session:
-      type: object
-      properties:
-        sessionName:
-          type: string
-        date:
-          type: string
-          format: date
-        attendees:
-          type: array
-          items:
-            type: string
-        summary:
-          type: string
-        transcript:
-          type: string
-        snapshots:
-          type: array
-          items:
-            type: string

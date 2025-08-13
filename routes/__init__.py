@@ -1,1 +1,2 @@
-from .qdrant_routes import bp as qdrant_bp
+from .meetings_routes import bp as meetings_bp
+from .assets_routes import bp as assets_bp
